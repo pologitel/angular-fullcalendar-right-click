@@ -10,11 +10,11 @@
       [views]="views"
       [allDaySlot]="false"
       [slotEventOverlap]="false"
-      [columnHeaderHtml]="columnHeaderHandler"
       [plugins]="calendarPlugins"
       [events]="events"
       [draggable]="true"
       [editable]="true"
+      [columnHeaderHtml]="columnHeaderRendered"
       (eventRender)="eventRenderHandler($event)"
       (contextmenu)="contextMenuHandler($event)"
       (eventClick)="eventClickHandler($event)"
@@ -35,7 +35,7 @@
     <ng-template contextMenuItem divider="true"></ng-template>
 
     <ng-template contextMenuItem let-item>
-      Clicked on: {{ item.clickedOn }}
+      Right click on: {{ item.clickedOn }}
     </ng-template>
 
     <ng-template contextMenuItem divider="true"></ng-template>
@@ -55,7 +55,7 @@
     <ng-template contextMenuItem divider="true"></ng-template>
 
     <ng-template contextMenuItem let-item>
-      Clicked on: {{ item.clickedOn }}
+      Right click on: {{ item.clickedOn }}
     </ng-template>
 
     <ng-template contextMenuItem divider="true"></ng-template>

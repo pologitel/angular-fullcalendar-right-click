@@ -67,7 +67,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     },
     week: {
       titleFormat: {  day: '2-digit', month: 'long', year: 'numeric'},
-      columnHeaderFormat: { weekday: 'long', day: '2-digit', omitCommas: true }
+      columnHeaderFormat: { weekday: 'long', day: '2-digit', omitCommas: true },
+      // columnHeader: false
     },
     day: {
       titleFormat: {  day: '2-digit', month: 'long', year: 'numeric'},
@@ -96,12 +97,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   @NgLog()
   eventClickHandler(eventInfo: any) {}
 
-  columnHeaderHandler(date) {
-    return date;
-  }
-
   @NgLog()
   dateClickHandler($event) {}
+
+  @NgLog()
+  columnHeaderRendered($event) {
+    return $event;
+  }
 
   @NgLog()
   contextMenuHandler($event: any) {
@@ -109,7 +111,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const simpleTimeGrid = (this.apiCalendar.view as any).simpleTimeGrid;
     const { dateSpan: { range: { start } } } = simpleTimeGrid.queryHit($event.pageX, $event.pageY);
 
-    console.log(simpleTimeGrid.queryHit($event.pageX, $event.pageY));
+    console.log('%c Class SimpleTimeGrid queryHit method: ', 'color: #ffa200; font-weight: bold', simpleTimeGrid.queryHit($event.pageX, $event.pageY));
 
     const currentDate = moment(start).format('YYYY-MM-DD');
 
